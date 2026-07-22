@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- LaunchDaemon template for cvmfs_nfs_server.  Adjust the binary path,
+     repository list, keys and cache locations for the installation. -->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>ch.cern.cvmfs.nfsserver</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/libexec/cvmfs/cvmfs_nfs_server</string>
+		<string>-repos</string>
+		<string>sft.cern.ch</string>
+		<string>-keys</string>
+		<string>/usr/local/etc/cvmfs/keys/cern.ch</string>
+		<string>-cache</string>
+		<string>/usr/local/var/cvmfs-nfs</string>
+		<string>-listen</string>
+		<string>127.0.0.1:11149</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+	<key>SoftResourceLimits</key>
+	<dict>
+		<key>NumberOfFiles</key>
+		<integer>4096</integer>
+	</dict>
+	<key>StandardOutPath</key>
+	<string>/usr/local/var/log/cvmfs_nfs_server.log</string>
+	<key>StandardErrorPath</key>
+	<string>/usr/local/var/log/cvmfs_nfs_server.log</string>
+</dict>
+</plist>
